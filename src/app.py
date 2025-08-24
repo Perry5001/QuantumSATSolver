@@ -27,5 +27,12 @@ def call_files():
     result = find_solution(arg)
     return jsonify({"message": result})
 
+@app.route('/hello', methods=['POST'])
+def call_files():
+    data = request.json
+    arg = data.get('arg', '')
+    result = f'Hello, {arg}!'
+    return jsonify({"message": result})
+
 if __name__ == '__main__':
     app.run(port=5000)

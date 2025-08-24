@@ -50,6 +50,7 @@ function populateSolution(solution) {
     solutionOutput.innerHTML = solution ? "Solution: " + solution : 'X';
 }
 
+loadBackend("Frontend loaded");
 solveBtn.addEventListener('click', solve);
 input.addEventListener('input', renderCNF);
 renderCNF();
@@ -68,4 +69,18 @@ function getSolution(arg) {
         populateSolution(data.message);
     })
     .catch(error => {solutionError(error);});
+}
+
+function loadBackend(arg) {
+    fetch(`${API_BASE}/hello`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+    })
+    .catch(error => {console.error('Error connecting to backend:', error);});
 }
