@@ -7,6 +7,10 @@ from solver import CNF, SATSolver
 app = Flask(__name__, static_folder='static')
 CORS(app)  # Allow requests from JS (like http://localhost:5500)
 
+@app.route('/')
+def serve_index():
+  return send_from_directory('.', 'index.html')
+
 def find_solution(dimacs):
     cnf = CNF.parse(dimacs)
     startTime = time.time()
