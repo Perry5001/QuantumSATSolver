@@ -5,14 +5,9 @@ from qiskit.circuit.library import GroverOperator, MCMT, ZGate, PhaseOracle
 from qiskit.quantum_info import Statevector
 from qiskit.visualization import plot_distribution, plot_histogram
 
-import matplotlib.pyplot as plt
-import numpy as np
-
-import time
-
 #from qiskit_aer import Aer
 
-from qiskit_ibm_runtime import QiskitRuntimeService
+#from qiskit_ibm_runtime import QiskitRuntimeService
 #from qiskit_ibm_runtime import SamplerV2 as Sampler
 from qiskit.primitives import StatevectorSampler as Sampler
 
