@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CNF SAT Viewer</title>
+  <link rel="stylesheet" href="static/styles.css" />
+  <script src="static/script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h1>CNF SAT Expression Viewer</h1>
+    <subhead>This application solves Boolean satisfiability (SAT) expressions. Negative numbers represent NOT. Each line represents a clause, where clauses are separated by AND. Each number represents a literal, which are separated by OR. By combining these clauses, the solver uses a quantum simulation to determine a possible assignment of variables that satisfy the expression. 
+    </subhead>
+    <textarea id="input">1 3 -4&#10;2 -3 4</textarea>
+    <div class="control-solution">
+      <div>
+        <button class="btn" id="solve-btn">Solve CNF</button>
+      </div>
+      <div id="solution">
+        Solution: —
+      </div>
+    </div>
+    <h3>CNF Statement:</h3>
+    <div id="cnf-output"></div>
+  </div>
+</body>
+</html>
