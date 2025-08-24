@@ -1,7 +1,8 @@
 # Quantum SAT Solver
 This project finds solutions to Boolean satisfiability problems by creating quantum circuits to utilize Grover's algorithm. It will simulate running this circuit on a classical computer through Qiskit, but can be modified to work with IBM quantum computers. I also authored a paper that outlines how each circuit is created and how it is able to find the solution.
 
-Link to Project: 
+Link to Project:
+
 Link to Paper:
 
 ## How To Use:
