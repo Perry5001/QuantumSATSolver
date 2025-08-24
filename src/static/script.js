@@ -5,7 +5,7 @@ const solutionOutput = document.getElementById('solution');
 
 const API_BASE = window.location.hostname.includes("127.0.0.1")
   ? "http://localhost:5000"
-  : "https://passion-project-0z09.onrender.com";
+  : "https://quantumsatsolver.onrender.com";
 
 
 function renderCNF() {
