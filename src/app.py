@@ -21,14 +21,14 @@ def find_solution(dimacs):
     return solution
 
 @app.route('/call-solution', methods=['POST'])
-def call_files():
+def call_solution():
     data = request.json
     arg = data.get('arg', '')
     result = find_solution(arg)
     return jsonify({"message": result})
 
 @app.route('/hello', methods=['POST'])
-def call_files():
+def hello():
     data = request.json
     arg = data.get('arg', '')
     result = f'Hello, {arg}!'
