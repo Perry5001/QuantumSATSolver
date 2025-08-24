@@ -19,7 +19,7 @@ function renderCNF() {
         output.innerHTML = 'Invalid input detected. Please ensure all entries are integers.';
         return;
     }
-    output.innerHTML = statement ? statement : '—';
+    output.innerHTML = statement ? statement : '';
 }
 
 function getDIMACS() {
