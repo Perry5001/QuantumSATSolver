@@ -1,6 +1,7 @@
 const input = document.getElementById('input');
 const output = document.getElementById('cnf-output');
 const solveBtn = document.getElementById('solve-btn');
+const randomBtn = document.getElementById('random-btn');
 const solutionOutput = document.getElementById('solution');
 
 const API_BASE = window.location.hostname.includes("127.0.0.1")
@@ -37,6 +38,11 @@ function solve() {
     getSolution(dimacs);
 }
 
+function randomCnf(){
+    console.log("Fetching random CNF...");
+    getRandom("random");
+}
+
 function solutionWaiting(){
     solutionOutput.innerHTML = "Solving...";
 }
@@ -50,8 +56,14 @@ function populateSolution(solution) {
     solutionOutput.innerHTML = solution ? "Solution: " + solution : 'X';
 }
 
+function populateRandom(cnf) {
+    input.value = cnf;
+    renderCNF();
+}
+
 loadBackend("Frontend loaded");
 solveBtn.addEventListener('click', solve);
+randomBtn.addEventListener('click', randomCnf);
 input.addEventListener('input', renderCNF);
 renderCNF();
 
@@ -71,12 +83,28 @@ function getSolution(arg) {
     .catch(error => {solutionError(error);});
 }
 
-function loadBackend(arg) {
-    fetch(`${API_BASE}/hello`, {
-        method: 'GET',
+function getRandom(arg){
+    fetch(`${API_BASE}/call-random`, {
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
-        }
+        },
+        body: JSON.stringify({ arg: arg})
+    })
+    .then(response => response.json())
+    .then(data => {
+        populateRandom(data.message);
+    })
+    .catch(error => {"Error fetching random CNF:", console.error(error);});
+}
+
+function loadBackend(arg) {
+    fetch(`${API_BASE}/hello`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ arg: arg})
     })
     .then(response => response.json())
     .then(data => {

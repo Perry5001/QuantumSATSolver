@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
-import time
+import time, random
 
 from solver import CNF, SATSolver
 
@@ -10,6 +10,32 @@ CORS(app)  # Allow requests from JS (like http://localhost:5500)
 @app.route('/')
 def serve_index():
   return send_from_directory('.', 'index.html')
+
+def random_cnf():
+    clauses = 10
+    vars = 5
+    expression = []
+    for i in range(clauses):
+        clause = []
+        while len(clause) < 3:
+            literal = random.randint(1,vars)
+            if random.random() < 0.5:
+                literal = -literal
+            if literal not in clause and -literal not in clause:
+                clause.append(literal)
+        clause.sort(key=abs)
+        expression.append(clause)
+    
+    print(expression)
+
+    result = ""
+    for clause in expression:
+        for literal in clause:
+            result += str(literal) + " "
+        result += "\n"
+
+    print(result)
+    return result
 
 def find_solution(dimacs):
     cnf = CNF.parse(dimacs)
@@ -25,6 +51,13 @@ def call_solution():
     data = request.json
     arg = data.get('arg', '')
     result = find_solution(arg)
+    return jsonify({"message": result})
+
+@app.route('/call-random', methods=['POST'])
+def call_random():
+    data = request.json
+    arg = data.get('arg', '')
+    result = random_cnf()
     return jsonify({"message": result})
 
 @app.route('/hello', methods=['POST'])
