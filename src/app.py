@@ -12,7 +12,7 @@ def serve_index():
   return send_from_directory('.', 'index.html')
 
 def random_cnf():
-    clauses = 10
+    clauses = 7
     vars = 5
     expression = []
     for i in range(clauses):
