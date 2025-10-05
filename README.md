@@ -5,7 +5,7 @@ The project website has a limited memory space.
 
 Link to Project: https://quantumsatsolver.onrender.com/
 
-Link to Paper:
+Link to Paper: https://bit.ly/47aefuQ
 
 ## How To Use:
 1. Create a `CNF` object
