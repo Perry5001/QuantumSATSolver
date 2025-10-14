@@ -9,10 +9,10 @@ Link to Paper: https://bit.ly/47aefuQ
 
 ## How To Use:
 1. Create a `CNF` object
-    a. Initialize it with a 2D array with each row representing a clause and each value as a number representation of the variable (one-indexed)
-    b. Or parse a CNF statement in DIMACS format using `CNF.parse()`
+    * Initialize it with a 2D array with each row representing a clause and each value as a number representation of the variable (one-indexed)
+    * Or parse a CNF statement in DIMACS format using `CNF.parse()`
 2. Create a `SATSolver` object
-    a. Initialize it with the CNF object and the number of solutions-default is 1.
+    * Initialize it with the CNF object and the number of solutions-default is 1.
 3. Run the `solve()` method to get a satisfiable solution.
 4. Or run the `sample()` method to get a distribution of outputs for given `shots`
 
